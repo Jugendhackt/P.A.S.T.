@@ -45,7 +45,8 @@ const cards = {
 				changes: {
 					satisfaction: +5,
 					money: -10,
-					environment: +5
+					environment: +5,
+					health: +5
 				},
 				next_cards: [
 					{
@@ -57,7 +58,7 @@ const cards = {
 			{
                 text: "Stattdessen sparen",
 				changes: {
-					health: -5,
+					health: -10,
 					environment: -5,
 					monex: +10
 				},
@@ -71,7 +72,7 @@ const cards = {
 		img: "",
 		answers: [
 			{
-                text: "Weg damit",
+                text: "Bohrlizenzen entziehen",
 				changes: {
 					satisfaction: -5,
 					money: -5,
@@ -88,7 +89,8 @@ const cards = {
                 text: "Budget erhöhen",
 				changes: {
 					environment: -10,
-					money: +10
+					money: +10,
+					health: -5
 				},
 				next_cards: null
 			}
