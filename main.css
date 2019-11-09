@@ -10,19 +10,27 @@ html, body {
 }
 
 #middle {
-	flex: 0 0 50%;
+	flex-grow: 1;
 }
 
 #card_text {
 	width: 100%;
 	text-align: center;
-	font-size: 2em;
+	font-size: 3em;
 	font-weight: bold;
+	color: #ffaa44;
 }
 
 #container {
 	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#container_middle {
 	display: flex;
 	flex-direction: row;
 }
@@ -36,10 +44,14 @@ html, body {
 }
 
 .btn_text {
-	font-size: 1.5em;
+	text-align: center;
+	font-size: 2em;
 	font-weight: bold;
 }
 
 #card_img {
-	width: 100%;
+	height: 75vh;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
