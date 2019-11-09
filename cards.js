@@ -1,4 +1,4 @@
-﻿const card_names = ["card1", "card2","card3","card4"];
+﻿const card_names = ["card1", "card2","card3","card4","event1"];
 const cards = {
 	card1: {
 		conditions: [],
@@ -12,12 +12,7 @@ const cards = {
 					health: +5,
 					environment: +10
 				},
-				next_cards: [
-					{
-						name: "card2",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Steuern belassen",
@@ -48,12 +43,7 @@ const cards = {
 					environment: +5,
 					health: +5
 				},
-				next_cards: [
-					{
-						name: "card3",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Stattdessen sparen",
@@ -78,12 +68,7 @@ const cards = {
 					money: -5,
 					environment: +10
 				},
-				next_cards: [
-					{
-						name: "card4",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Budget erhöhen",
@@ -105,7 +90,7 @@ const cards = {
 			}
 		],
 		text: "Obdachlosenhilfe",
-		img: "",
+		img: "card-obdachlosenhilfe.png",
 		answers: [
 			{
                 text: "Wohnungen bauen",
@@ -115,12 +100,7 @@ const cards = {
 					health: +5,
 					environment: -5
 				},
-				next_cards: [
-					{
-						name: "card1",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Abschiebungen",
@@ -131,5 +111,28 @@ const cards = {
 				next_cards: null
 			}
 		]
-	}
+	},
+	event1: {
+		conditions: [
+			{
+				category: "environment",
+				min: 0,
+				max: 70
+			}
+		],
+		text: "HOCHWASSER!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					health: -5,
+					environment: -5
+				},
+				next_cards: null
+			}
+		]
+	},
 };
