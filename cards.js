@@ -1,4 +1,4 @@
-const card_names = ["card1", "card2"];
+﻿const card_names = ["card1", "card2"];
 const cards = {
 	card1: {
 		conditions: null,
@@ -6,10 +6,9 @@ const cards = {
 		img: "card-cartax.png",
 		answers: [
 			{
-                text: "Ja",
+                text: "Steuern erheben und Auto-Import einstellen",
 				changes: {
 					satisfaction: -10,
-					money: +5,
 					health: +5,
 					environment: +10
 				},
@@ -21,8 +20,9 @@ const cards = {
 				]
 			},
 			{
-                text: "Nein",
+                text: "Steuern belassen",
 				changes: {
+					satisfaction: +5,
 					environment: -10
 				},
 				next_cards: null
@@ -49,16 +49,46 @@ const cards = {
 				},
 				next_cards: [
 					{
+						name: "card3",
+						probability: 100
+					}
+				]
+			},
+			{
+                text: "Stattdessen sparen",
+				changes: {
+					health: -5,
+					environment: -5,
+					monex: +10
+				},
+				next_cards: null
+			}
+		]
+	},
+	card3: {
+		conditions: ,
+		text: "Kohle- und Ölbetrieb schwächen",
+		img: "",
+		answers: [
+			{
+                text: "Weg damit",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					environment: +10
+				},
+				next_cards: [
+					{
 						name: "card1",
 						probability: 100
 					}
 				]
 			},
 			{
-                text: "Forscher wegsperren",
+                text: "Budget erhöhen",
 				changes: {
-					health: -10,
-					environment: -5
+					environment: -10,
+					money: +10
 				},
 				next_cards: null
 			}
