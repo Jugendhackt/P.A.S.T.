@@ -1,6 +1,6 @@
-setTimeout(function() {
+/*setTimeout(function() {
 	location.reload()
-}, 5000);
+}, 5000);*/
 const LEFT = 0;
 const RIGHT = 1;
 const categoryNames = ["money", "satisfaction", "health", "environment"];
