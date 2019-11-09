@@ -1,7 +1,7 @@
 ﻿const card_names = ["card1", "card2","card3"];
 const cards = {
 	card1: {
-		conditions: null,
+		conditions: [],
 		text: "Steuererhöhung auf Autos",
 		img: "card-cartax.png",
 		answers: [

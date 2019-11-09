@@ -4,6 +4,7 @@
 const LEFT = 0;
 const RIGHT = 1;
 const categoryNames = ["money", "satisfaction", "health", "environment"];
+const importantCategorys = ["money", "satisfaction", "health", "environment"];
 categorys = {
 	money: 50,
 	satisfaction: 50,
@@ -39,6 +40,7 @@ function btnClick(site) {
 		if (answer.changes[categoryName] !== undefined) {
 			categorys[categoryName] += answer.changes[categoryName];
 		}
+		if (categorys[categoryName] <= 0 && ) {}
 	}
 	if (!!answer.next_cards) {
 		var probabilitySum = 0;
@@ -56,8 +58,8 @@ function btnClick(site) {
 		var possibleCards = [];
 		for (var i = 0; i < card_names.length; i++) {
 			if (checkConditions(cards[card_names[i]].conditions)) {
-				console.log(cardIndex);
-				possibleCards.push(cards[card_names[i]]);
+				console.log(card_names[i]);
+				possibleCards.push(card_names[i]);
 			}
 		}
 		if (!possibleCards.length) {
@@ -65,9 +67,11 @@ function btnClick(site) {
 		}
 		setActiveCard(possibleCards[Math.round(Math.random() * (possibleCards.length - 1))]);
 	}
+
 }
 
 function setActiveCard(name) {
+	console.log(name);
 	activeCard = cards[name];
 	showCard();
 	if (activeCard.answers[RIGHT] !== undefined) {
