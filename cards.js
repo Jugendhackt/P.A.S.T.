@@ -1,4 +1,4 @@
-﻿const card_names = ["card1", "card2","card3","card4"];
+﻿const card_names = ["card1","card2","card3","card4","card5","event1","event2","event3"];
 const cards = {
 	card1: {
 		conditions: [],
@@ -10,20 +10,17 @@ const cards = {
 				changes: {
 					satisfaction: -10,
 					health: +5,
-					environment: +10
+					environment: +10,
+					desaster: +1
 				},
-				next_cards: [
-					{
-						name: "card2",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Steuern belassen",
 				changes: {
 					satisfaction: +5,
-					environment: -10
+					environment: -10,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -46,21 +43,18 @@ const cards = {
 					satisfaction: +5,
 					money: -10,
 					environment: +5,
-					health: +5
+					health: +5,
+					desaster: +1
 				},
-				next_cards: [
-					{
-						name: "card3",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Stattdessen sparen",
 				changes: {
 					health: -10,
 					environment: -5,
-					money: +10
+					money: +10,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -76,21 +70,18 @@ const cards = {
 				changes: {
 					satisfaction: -5,
 					money: -5,
-					environment: +10
+					environment: +10,
+					desaster: +1
 				},
-				next_cards: [
-					{
-						name: "card4",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Budget erhöhen",
 				changes: {
 					environment: -10,
 					money: +10,
-					health: -5
+					health: -5,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -105,7 +96,7 @@ const cards = {
 			}
 		],
 		text: "Obdachlosenhilfe",
-		img: "",
+		img: "card-obdachlosenhilfe.png",
 		answers: [
 			{
                 text: "Wohnungen bauen",
@@ -113,23 +104,124 @@ const cards = {
 					satisfaction: +5,
 					money: -5,
 					health: +5,
-					environment: -5
+					environment: -5,
+					desaster: +1
 				},
-				next_cards: [
-					{
-						name: "card1",
-						probability: 100
-					}
-				]
+				next_cards: null
 			},
 			{
                 text: "Abschiebungen",
 				changes: {
 					satisfaction: -10,
 					health: +5,
+					desaster: +1
 				},
 				next_cards: null
 			}
 		]
-	}
+	},
+ 	card5: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 5,
+				max: 100
+			}
+		],
+		text: "Dammbau",
+		img: "card-damm.png",
+		answers: [
+			{
+                text: "Hochwasser-Prävention",
+				changes: {
+					satisfaction: +5,
+					money: -10,
+					environment: +5,
+					desaster: -7
+				},
+				next_cards: null
+			},
+			{
+                text: "Geld sparen",
+				changes: {
+					satisfaction: -5,
+					money: +10,
+					desaster: +1
+				},
+				next_cards: null
+			}
+		]
+	},
+	event1: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 10,
+				max: 100
+			}
+		],
+		text: "HOCHWASSER!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					health: -5,
+					environment: -5,
+					desaster: -7
+				},
+				next_cards: null
+			}
+		]
+	},
+	event2: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 17,
+				max: 100
+			}
+		],
+		text: "HOCHWASSER!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					health: -5,
+					environment: -5,
+					desaster: -7
+				},
+				next_cards: null
+			}
+		]
+	},
+	event3: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 24,
+				max: 100
+			}
+		],
+		text: "HOCHWASSER!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					health: -5,
+					environment: -5,
+					desaster: -7
+				},
+				next_cards: null
+			}
+		]
+	},
 };
