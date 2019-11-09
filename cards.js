@@ -95,7 +95,7 @@ const cards = {
 				next_cards: null
 			}
 		]
-	}
+	},
 	card4: {
 		conditions: [
 			{
@@ -105,7 +105,7 @@ const cards = {
 			}
 		],
 		text: "Obdachlosenhilfe",
-		img: "card-heatresistence.png",
+		img: "",
 		answers: [
 			{
                 text: "Wohnungen bauen",
@@ -131,5 +131,5 @@ const cards = {
 				next_cards: null
 			}
 		]
-	},
+	}
 };
