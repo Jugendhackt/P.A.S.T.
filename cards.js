@@ -1,4 +1,4 @@
-﻿const card_names = ["card1", "card2","card3","card4","card5"];
+﻿const card_names = ["card1", "card2","card3","card4"];
 const cards = {
 	card1: {
 		conditions: [],

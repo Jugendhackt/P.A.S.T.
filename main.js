@@ -40,7 +40,7 @@ function btnClick(site) {
 		if (answer.changes[categoryName] !== undefined) {
 			categorys[categoryName] += answer.changes[categoryName];
 		}
-		if (categorys[categoryName] <= 0 && ) {}
+		if (categorys[categoryName] <= 0) {}
 	}
 	if (!!answer.next_cards) {
 		var probabilitySum = 0;
