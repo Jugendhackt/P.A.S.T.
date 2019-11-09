@@ -13,12 +13,14 @@ categorys = {
 };
 
 activeCard = {};
+round = 0;
 setTimeout(function() {
 	leftText = document.getElementById('left_text');
 	rightText = document.getElementById('right_text');
 	cardText = document.getElementById('card_text');
 	cardImg = document.getElementById('card_img');
 	setActiveCard("card1");
+	checkWinLose();
 }, 100);
 
 function leftBtnClick() {
@@ -40,7 +42,9 @@ function btnClick(site) {
 		if (answer.changes[categoryName] !== undefined) {
 			categorys[categoryName] += answer.changes[categoryName];
 		}
-		if (categorys[categoryName] <= 0) {}
+		if (categorys[categoryName] > 100) {
+			categorys[categoryName] = 100;
+		}
 	}
 	if (!!answer.next_cards) {
 		var probabilitySum = 0;
@@ -67,7 +71,8 @@ function btnClick(site) {
 		}
 		setActiveCard(possibleCards[Math.round(Math.random() * (possibleCards.length - 1))]);
 	}
-
+	checkWinLose();
+	round++;
 }
 
 function setActiveCard(name) {
@@ -100,4 +105,18 @@ function checkConditions(conditions) {
 		}
 	}
 	return true;
+}
+
+function checkWinLose() {
+	for (var i = 0; i < importantCategorys.length; i++) {
+		const categoryValue = categorys[importantCategorys[i]];
+		if (categoryValue <= 0) {
+			alert("You killed the earth! D:");
+		}
+		document.getElementById("category_" + importantCategorys[i]).style.backgroundColor =
+			"rgb(" + (224 - categoryValue * 1.92) + "," + (32 + categoryValue * 1.92) + ", 32)";
+		if (round == 50) {
+			alert("The end");
+		}
+	}
 }
