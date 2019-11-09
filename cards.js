@@ -1,18 +1,17 @@
-card_names = ["card1", "card2"];
-cards = {
+const card_names = ["card1", "card2"];
+const cards = {
 	card1: {
-		conditions: [
-		],
-		text: "abcdef",
-		img: "card.png",
+		conditions: null,
+		text: "Steuererhöhung auf Autos",
+		img: "card-cartax.png",
 		answers: [
 			{
-                text: "abc",
+                text: "Ja",
 				changes: {
-					money: 0,
-					satisfaction: 5,
-					health: -20,
-					environment: 10
+					satisfaction: -10,
+					money: +5,
+					health: +5,
+					environment: +10
 				},
 				next_cards: [
 					{
@@ -22,12 +21,9 @@ cards = {
 				]
 			},
 			{
-                text: "def",
+                text: "Nein",
 				changes: {
-					money: 10,
-					satisfaction: 0,
-					health: -20,
-					environment: 15
+					environment: -10
 				},
 				next_cards: null
 			}
@@ -37,20 +33,19 @@ cards = {
 		conditions: [
 			{
 				category: "money",
-				min: 20,
+				min: 40,
 				max: 100
 			}
 		],
-		text: "abcdef2",
-		img: "card.png",
+		text: "Forschung für hitzeresistente Nutzpflanzen",
+		img: "card-heatresistence.png",
 		answers: [
 			{
-                text: "abc2",
+                text: "Investieren",
 				changes: {
-					money: 0,
-					satisfaction: 5,
-					health: -20,
-					environment: 10
+					satisfaction: +5,
+					money: -10,
+					environment: +5
 				},
 				next_cards: [
 					{
@@ -60,12 +55,10 @@ cards = {
 				]
 			},
 			{
-                text: "def2",
+                text: "Forscher wegsperren",
 				changes: {
-					money: 10,
-					satisfaction: 0,
-					health: -20,
-					environment: 15
+					health: -10,
+					environment: -5
 				},
 				next_cards: null
 			}
