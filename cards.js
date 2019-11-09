@@ -1,4 +1,4 @@
-﻿const card_names = ["card1", "card2","card3","card4","event1"];
+﻿const card_names = ["card1","card2","card3","card4","card5","event1","event2","event3"];
 const cards = {
 	card1: {
 		conditions: [],
@@ -10,7 +10,8 @@ const cards = {
 				changes: {
 					satisfaction: -10,
 					health: +5,
-					environment: +10
+					environment: +10,
+					desaster: +1
 				},
 				next_cards: null
 			},
@@ -18,7 +19,8 @@ const cards = {
                 text: "Steuern belassen",
 				changes: {
 					satisfaction: +5,
-					environment: -10
+					environment: -10,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -41,7 +43,8 @@ const cards = {
 					satisfaction: +5,
 					money: -10,
 					environment: +5,
-					health: +5
+					health: +5,
+					desaster: +1
 				},
 				next_cards: null
 			},
@@ -50,7 +53,8 @@ const cards = {
 				changes: {
 					health: -10,
 					environment: -5,
-					money: +10
+					money: +10,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -66,7 +70,8 @@ const cards = {
 				changes: {
 					satisfaction: -5,
 					money: -5,
-					environment: +10
+					environment: +10,
+					desaster: +1
 				},
 				next_cards: null
 			},
@@ -75,7 +80,8 @@ const cards = {
 				changes: {
 					environment: -10,
 					money: +10,
-					health: -5
+					health: -5,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -98,7 +104,8 @@ const cards = {
 					satisfaction: +5,
 					money: -5,
 					health: +5,
-					environment: -5
+					environment: -5,
+					desaster: +1
 				},
 				next_cards: null
 			},
@@ -107,6 +114,39 @@ const cards = {
 				changes: {
 					satisfaction: -10,
 					health: +5,
+					desaster: +1
+				},
+				next_cards: null
+			}
+		]
+	},
+ 	card5: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 5,
+				max: 100
+			}
+		],
+		text: "Dammbau",
+		img: "card-damm.png",
+		answers: [
+			{
+                text: "Hochwasser-Prävention",
+				changes: {
+					satisfaction: +5,
+					money: -10,
+					environment: +5,
+					desaster: -7
+				},
+				next_cards: null
+			},
+			{
+                text: "Geld sparen",
+				changes: {
+					satisfaction: -5,
+					money: +10,
+					desaster: +1
 				},
 				next_cards: null
 			}
@@ -115,9 +155,9 @@ const cards = {
 	event1: {
 		conditions: [
 			{
-				category: "environment",
-				min: 0,
-				max: 70
+				category: "desaster",
+				min: 10,
+				max: 100
 			}
 		],
 		text: "HOCHWASSER!",
@@ -129,7 +169,56 @@ const cards = {
 					satisfaction: -5,
 					money: -5,
 					health: -5,
-					environment: -5
+					environment: -5,
+					desaster: -7
+				},
+				next_cards: null
+			}
+		]
+	},
+	event2: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 17,
+				max: 100
+			}
+		],
+		text: "HOCHWASSER!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					health: -5,
+					environment: -5,
+					desaster: -7
+				},
+				next_cards: null
+			}
+		]
+	},
+	event3: {
+		conditions: [
+			{
+				category: "desaster",
+				min: 24,
+				max: 100
+			}
+		],
+		text: "HOCHWASSER!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					money: -5,
+					health: -5,
+					environment: -5,
+					desaster: -7
 				},
 				next_cards: null
 			}

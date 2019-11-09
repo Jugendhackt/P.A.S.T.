@@ -3,13 +3,14 @@
 }, 5000);*/
 const LEFT = 0;
 const RIGHT = 1;
-const categoryNames = ["money", "satisfaction", "health", "environment"];
+const categoryNames = ["money", "satisfaction", "health", "environment", "desaster"];
 const importantCategorys = ["money", "satisfaction", "health", "environment"];
 categorys = {
 	money: 50,
 	satisfaction: 50,
 	health: 50,
-	environment: 50
+	environment: 50,
+	desaster: 0
 };
 
 activeCard = {};
