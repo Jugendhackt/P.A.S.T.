@@ -78,6 +78,7 @@ const cards = {
 			{
                 text: "Budget erhöhen",
 				changes: {
+					satisfaction: +5,
 					environment: -10,
 					money: +10,
 					health: -5,
@@ -112,6 +113,7 @@ const cards = {
 			{
                 text: "Abschiebungen",
 				changes: {
+					money: +5,
 					satisfaction: -10,
 					health: +5,
 					desaster: +1
@@ -144,7 +146,7 @@ const cards = {
 			{
                 text: "Geld sparen",
 				changes: {
-					satisfaction: -5,
+					health: -5,
 					money: +10,
 					desaster: +1
 				},
