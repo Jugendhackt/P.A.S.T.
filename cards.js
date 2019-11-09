@@ -1,4 +1,4 @@
-﻿const card_names = ["card1", "card2"];
+﻿const card_names = ["card1", "card2","card3"];
 const cards = {
 	card1: {
 		conditions: null,
@@ -66,7 +66,7 @@ const cards = {
 		]
 	},
 	card3: {
-		conditions: ,
+		conditions: null,
 		text: "Kohle- und Ölbetrieb schwächen",
 		img: "",
 		answers: [
