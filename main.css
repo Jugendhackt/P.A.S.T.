@@ -36,10 +36,12 @@ html, body {
 }
 
 #left_btn {
+	cursor: pointer;
 	flex: 0 0 25%;
 }
 
 #right_btn {
+	cursor: pointer;
 	flex: 0 0 25%;
 }
 

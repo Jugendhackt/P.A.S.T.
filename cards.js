@@ -69,7 +69,7 @@ const cards = {
 	card3: {
 		conditions: null,
 		text: "Kohle- und Ölbetrieb schwächen",
-		img: "card-bohrer",
+		img: "card-bohrer.png",
 		answers: [
 			{
                 text: "Bohrlizenzen entziehen",
