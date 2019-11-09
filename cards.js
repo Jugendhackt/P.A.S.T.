@@ -60,7 +60,7 @@ const cards = {
 				changes: {
 					health: -10,
 					environment: -5,
-					monex: +10
+					money: +10
 				},
 				next_cards: null
 			}
@@ -69,7 +69,7 @@ const cards = {
 	card3: {
 		conditions: null,
 		text: "Kohle- und Ölbetrieb schwächen",
-		img: "",
+		img: "card-bohrer",
 		answers: [
 			{
                 text: "Bohrlizenzen entziehen",
@@ -80,7 +80,7 @@ const cards = {
 				},
 				next_cards: [
 					{
-						name: "card1",
+						name: "card4",
 						probability: 100
 					}
 				]
@@ -96,4 +96,40 @@ const cards = {
 			}
 		]
 	}
+	card4: {
+		conditions: [
+			{
+				category: "health",
+				min: 0,
+				max: 70
+			}
+		],
+		text: "Obdachlosenhilfe",
+		img: "card-heatresistence.png",
+		answers: [
+			{
+                text: "Wohnungen bauen",
+				changes: {
+					satisfaction: +5,
+					money: -5,
+					health: +5,
+					environment: -5
+				},
+				next_cards: [
+					{
+						name: "card1",
+						probability: 100
+					}
+				]
+			},
+			{
+                text: "Abschiebungen",
+				changes: {
+					satisfaction: -10,
+					health: +5,
+				},
+				next_cards: null
+			}
+		]
+	},
 };
