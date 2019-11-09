@@ -40,8 +40,12 @@ function btnClick(site) {
 			categorys[categoryName] += answer.changes[categoryName];
 		}
 	}
-	if (answer.next_cards !== null) {
-		var rand = Math.round(Math.random() * 100);
+	if (!!answer.next_cards) {
+		var probabilitySum = 0;
+		for (var i = 0; i < answer.next_cards.length; i++) {
+			probabilitySum += answer.next_cards[i].probability;
+		}
+		var rand = Math.round(Math.random() * probabilitySum);
 		var cardIndex = 0;
 		while (answer.next_cards[cardIndex].probability < rand) {
 			rand -= answer.next_cards[cardIndex].probability;
@@ -49,12 +53,17 @@ function btnClick(site) {
 		}
 		setActiveCard(answer.next_cards[cardIndex].name);
 	} else {
-		var cardIndex;
-		do {
-			cardIndex = Math.round(Math.random() * (card_names.length - 1))
-			console.log(cardIndex);
-		} while (!checkConditions(cards[card_names[cardIndex]].conditions));
-		setActiveCard(card_names[cardIndex]);
+		var possibleCards = [];
+		for (var i = 0; i < card_names.length; i++) {
+			if (checkConditions(cards[card_names[i]].conditions)) {
+				console.log(cardIndex);
+				possibleCards.push(cards[card_names[i]]);
+			}
+		}
+		if (!possibleCards.length) {
+			alert("X_X");
+		}
+		setActiveCard(possibleCards[Math.round(Math.random() * (possibleCards.length - 1))]);
 	}
 }
 
@@ -76,7 +85,7 @@ function showCard() {
 }
 
 function checkConditions(conditions) {
-	if (conditions === null) {
+	if (!conditions) {
 		return false;
 	}
 	for (var i = 0; i < conditions.length; i++) {
