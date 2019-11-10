@@ -53,7 +53,7 @@
 			{
                 text: "Stattdessen sparen",
 				changes: {
-					health: -10,
+					health: -5,
 					environment: -5,
 					money: +10,
 					desaster: +1
@@ -175,7 +175,6 @@
                 text: "THIS LIL SECRET NOONE SEES",
 				changes: {
 					satisfaction: -5,
-					money: -5,
 					health: -10,
 					environment: -5,
 					desaster: -7
@@ -200,7 +199,7 @@
                 text: "THIS LIL SECRET NOONE SEES",
 				changes: {
 					satisfaction: -5,
-					health: -10,
+					health: -5,
 					environment: -10,
 					desaster: -7
 				},
