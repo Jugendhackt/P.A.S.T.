@@ -1,25 +1,35 @@
 /*setTimeout(function() {
 	location.reload()
 }, 5000);*/
+
+let cardNames = [];
+
 const LEFT = 0;
 const RIGHT = 1;
-const categoryNames = ["money", "satisfaction", "health", "environment", "desaster"];	// all existing categories (hidden & important)
 const importantCategories = ["money", "satisfaction", "health", "environment"];			// all important categories (get shown and checked for lose)
-categories = {
+const hiddenCategories = ["desaster"];
+const categoryNames = [].concat(importantCategories).concat(hiddenCategories);			// all existing categories (hidden & important)
+const categories = {
 	money: 50,
 	satisfaction: 50,
 	health: 50,
 	environment: 50,
 	desaster: 0
 };																						// object for all categories + init values 
+let activeCard = {};																	// currently selected card
+let round = 0;																			// number of rounds already played
 
-activeCard = {};																		// currently selected card
-round = 0;																				// number of rounds already played
+let leftText;
+let rightText;
+let cardText;
+let cardImg;
+
 setTimeout(function() {																	// init-function
 	leftText = document.getElementById('left_text');									// 4 x get HTML-element ref
 	rightText = document.getElementById('right_text');
 	cardText = document.getElementById('card_text');
 	cardImg = document.getElementById('card_img');
+	cardNames = Object.keys(cards);
 	setActiveCard("card1");																// set first selected card
 	checkWinLose();																		// init displayed categories
 }, 100);
@@ -38,7 +48,7 @@ function rightBtnClick() { 																// called if right option is clicked
 
 function btnClick(site) {																// called if one of the two options is clicked
 	const answer = activeCard.answers[site];	
-	for (var i = 0; i < categoryNames.length; i++) {									// apply changes to all categories
+	for (let i = 0; i < categoryNames.length; i++) {									// apply changes to all categories
 		const categoryName = categoryNames[i];
 		if (answer.changes[categoryName] !== undefined) {								// check if there is a change for this category
 			categories[categoryName] += answer.changes[categoryName];
@@ -48,23 +58,21 @@ function btnClick(site) {																// called if one of the two options is 
 		}
 	}
 	if (!!answer.next_cards) {															// check if there are next cards defined
-		var probabilitySum = 0;
-		for (var i = 0; i < answer.next_cards.length; i++) {							// calculate sum of set "probability points"
+		let probabilitySum = 0;
+		for (let i = 0; i < answer.next_cards.length; i++) {							// calculate sum of set "probability points"
 			probabilitySum += calculateProbability(answer.next_cards[i].probability);
 		}
-		var rand = Math.round(Math.random() * probabilitySum);							// see note 1 (EOF)
-		var cardIndex = 0;
-		console.log(cardIndex, answer.next_cards);
+		let rand = Math.round(Math.random() * probabilitySum);							// see note 1 (EOF)
+		let cardIndex = 0;
 		while (calculateProbability(answer.next_cards[cardIndex].probability) < rand) {
 			rand -= calculateProbability(answer.next_cards[cardIndex].probability);
-			console.log(1, calculateProbability(answer.next_cards[cardIndex].probability));
 			cardIndex++;
 		}
 		setActiveCard(answer.next_cards[cardIndex].name);
 	} else {																			// randomly select one card
-		var possibleCards = [];
-		var probabilitySum = 0;
-		for (var i = 0; i < cardNames.length; i++) {									// check all cards, if there conditions are meet
+		let possibleCards = [];
+		let probabilitySum = 0;
+		for (let i = 0; i < cardNames.length; i++) {									// check all cards, if there conditions are meet
 			if (checkConditions(cards[cardNames[i]].conditions)) {
 				possibleCards.push(cardNames[i]);
 				probabilitySum += calculateProbability(cards[cardNames[i]].probability);
@@ -73,10 +81,10 @@ function btnClick(site) {																// called if one of the two options is 
 		if (!possibleCards.length) {													// check for no possible cards
 			alert("X_X");
 		}
-		var rand = Math.round(Math.random() * probabilitySum);							// note 1; won't work as good here
-		var cardIndex = 0;
-		while (calculateProbability(cards[cardNames[cardIndex]].probability) < rand) {
-			rand -= calculateProbability(cards[cardNames[cardIndex]].probability);
+		let rand = Math.round(Math.random() * probabilitySum);							// note 1; won't work as good here
+		let cardIndex = 0;
+		while (calculateProbability(cards[possibleCards[cardIndex]].probability) < rand) {
+			rand -= calculateProbability(cards[possibleCards[cardIndex]].probability);
 			cardIndex++;
 		}
 		setActiveCard(possibleCards[cardIndex]);										// select one of the possible cards
@@ -89,10 +97,10 @@ function setActiveCard(name) {															// updates the page to show the new
    	activeCard = cards[name];
 	cardText.innerText = activeCard.text;												// update text
 	cardImg.src = activeCard.img;														// update image
-	if (activeCard.answers[RIGHT] !== undefined) {										// check if 2 answers exist
+	if (activeCard.answers[RIGHT] !== undefined) {										// check if 2 answers exist if not then this is a event
 		leftText.innerText = activeCard.answers[LEFT].text;								// update text
 		rightText.innerText = activeCard.answers[RIGHT].text;							// update text
-	} else {																			// set empty answers
+	} else {																			// set empty answers for event
 		leftText.innerText = "";
 		rightText.innerText = "";
 	}
@@ -102,7 +110,7 @@ function checkConditions(conditions) {													// check conditions of one ca
 	if (!conditions) {																	// no defined conditions means that this card can't be selected by random
 		return false;
 	}
-	for (var i = 0; i < conditions.length; i++) {										// check all conditions
+	for (let i = 0; i < conditions.length; i++) {										// check all conditions
 		const condition = conditions[i];
 		if (categories[condition.category] < condition.min ||							// test if category x is in the defined range
 			categories[condition.category] > condition.max) {
@@ -113,7 +121,7 @@ function checkConditions(conditions) {													// check conditions of one ca
 }
 
 function checkWinLose() {
-	for (var i = 0; i < importantCategories.length; i++) {								// check all important categories
+	for (let i = 0; i < importantCategories.length; i++) {								// check all important categories
 		const categoryValue = categories[importantCategories[i]];
 		if (categoryValue <= 0) {														// if one important category is smaller or equal to 0 the player lost
 			alert("You killed the earth! D:");
@@ -135,15 +143,15 @@ function calculateProbability(term) {													// calculates the probability
 	if (typeof term === "number") {
 		return term;
 	}
-	for (var i = 0; i < categoryNames.length; i++) {									// replaces every category name with it's current value
+	for (let i = 0; i < categoryNames.length; i++) {									// replaces every category name with it's current value
 		if (typeof categories[categoryNames[i]] === "number") {
 			term = term.replace(
 				new RegExp(categoryNames[i], "g"),
-				categories[categoryNames[i]]
+				categories[categoryNames[i]] >= 0 ? categories[categoryNames[i]] : 0
 			);
 		}
 	}
-	/*DON'T DO THIS!!!!*/return eval(term);												// calculates the value of the term (VERY DANGEROUS!!!!!!!!!!!!)
+	/*DON'T DO THIS!!!!*/return Math.floor(eval(term));									// calculates the value of the term (VERY DANGEROUS!!!!!!!!!!!!)
 }
 
 /**************************************************************************************
