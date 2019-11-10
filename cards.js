@@ -1,5 +1,4 @@
-﻿const cardNames = ["card1","card2","card3","card4","card5","event1"];
-const cards = {
+﻿const cards = {
 	card1: {
 		probability: 1,
 		conditions: [],
