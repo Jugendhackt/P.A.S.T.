@@ -146,8 +146,9 @@ const cards = {
 			{
                 text: "Geld sparen",
 				changes: {
-					health: -5,
+					health: -10,
 					money: +10,
+					environment: +5,
 					desaster: +1
 				},
 				next_cards: null
