@@ -1,4 +1,4 @@
-# P.A.S.T. (postapokalyptisches Spiel des Totes)
+# P.A.S.T. (postapokalyptisches Spiel des Todes)
 
 ## Ziel(goal)
 Dieses Spiel soll die Auswegslosigkeit darstellen, in die wir uns als Spezies
