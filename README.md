@@ -26,15 +26,15 @@ interface cards{
 		text: string,
 		img: string,
 		answers: {
-                text: string,
-				changes: {
-					[cardname: string]: number
-				},
-				next_cards?: {
-                    name: string,
-                    probability: number
-                }[]
+			text: string,
+			changes: {
+				[cardname: string]: number
+			},
+			next_cards?: {
+				name: string,
+				probability: number
 			}[]
+		}[]
 	}
 }
 ```
