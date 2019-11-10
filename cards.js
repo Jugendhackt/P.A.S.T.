@@ -1,6 +1,7 @@
-﻿const card_names = ["card1","card2","card3","card4","card5","event1","event2","event3"];
+﻿const cardNames = ["card1","card2","card3","card4","card5","event1"];
 const cards = {
 	card1: {
+		probability: 1,
 		conditions: [],
 		text: "Steuererhöhung auf Autos",
 		img: "card-cartax.png",
@@ -27,6 +28,7 @@ const cards = {
 		]
 	},
 	card2: {
+		probability: 1,
 		conditions: [
 			{
 				category: "money",
@@ -61,6 +63,7 @@ const cards = {
 		]
 	},
 	card3: {
+		probability: 1,
 		conditions: [],
 		text: "Kohle- und Ölbetrieb schwächen",
 		img: "card-bohrer.png",
@@ -89,6 +92,7 @@ const cards = {
 		]
 	},
 	card4: {
+		probability: 1,
 		conditions: [
 			{
 				category: "health",
@@ -123,6 +127,7 @@ const cards = {
 		]
 	},
  	card5: {
+ 		probability: 1,
 		conditions: [
 			{
 				category: "desaster",
@@ -155,6 +160,7 @@ const cards = {
 		]
 	},
 	event1: {
+		probability: "desaster / 3",
 		conditions: [
 			{
 				category: "desaster",
@@ -177,53 +183,5 @@ const cards = {
 				next_cards: null
 			}
 		]
-	},
-	event2: {
-		conditions: [
-			{
-				category: "desaster",
-				min: 17,
-				max: 100
-			}
-		],
-		text: "HOCHWASSER!",
-		img: "card-flut.png",
-		answers: [
-			{
-                text: "THIS LIL SECRET NOONE SEES",
-				changes: {
-					satisfaction: -5,
-					money: -5,
-					health: -5,
-					environment: -5,
-					desaster: -7
-				},
-				next_cards: null
-			}
-		]
-	},
-	event3: {
-		conditions: [
-			{
-				category: "desaster",
-				min: 24,
-				max: 100
-			}
-		],
-		text: "HOCHWASSER!",
-		img: "card-flut.png",
-		answers: [
-			{
-                text: "THIS LIL SECRET NOONE SEES",
-				changes: {
-					satisfaction: -5,
-					money: -5,
-					health: -5,
-					environment: -5,
-					desaster: -7
-				},
-				next_cards: null
-			}
-		]
-	},
+	}
 };

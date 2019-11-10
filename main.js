@@ -50,36 +50,43 @@ function btnClick(site) {																// called if one of the two options is 
 	if (!!answer.next_cards) {															// check if there are next cards defined
 		var probabilitySum = 0;
 		for (var i = 0; i < answer.next_cards.length; i++) {							// calculate sum of set "probability points"
-			probabilitySum += answer.next_cards[i].probability;
+			probabilitySum += calculateProbability(answer.next_cards[i].probability);
 		}
 		var rand = Math.round(Math.random() * probabilitySum);							// see note 1 (EOF)
 		var cardIndex = 0;
-		while (answer.next_cards[cardIndex].probability < rand) {
-			rand -= answer.next_cards[cardIndex].probability;
+		console.log(cardIndex, answer.next_cards);
+		while (calculateProbability(answer.next_cards[cardIndex].probability) < rand) {
+			rand -= calculateProbability(answer.next_cards[cardIndex].probability);
+			console.log(1, calculateProbability(answer.next_cards[cardIndex].probability));
 			cardIndex++;
 		}
 		setActiveCard(answer.next_cards[cardIndex].name);
 	} else {																			// randomly select one card
 		var possibleCards = [];
-		for (var i = 0; i < card_names.length; i++) {									// check all cards, if there conditions are meet
-			if (checkConditions(cards[card_names[i]].conditions)) {
-				console.log(card_names[i]);
-				possibleCards.push(card_names[i]);
+		var probabilitySum = 0;
+		for (var i = 0; i < cardNames.length; i++) {									// check all cards, if there conditions are meet
+			if (checkConditions(cards[cardNames[i]].conditions)) {
+				possibleCards.push(cardNames[i]);
+				probabilitySum += calculateProbability(cards[cardNames[i]].probability);
 			}
 		}
 		if (!possibleCards.length) {													// check for no possible cards
 			alert("X_X");
 		}
-		setActiveCard(
-			possibleCards[Math.round(Math.random() * (possibleCards.length - 1))]		// select one of the possible cards
-		);	
+		var rand = Math.round(Math.random() * probabilitySum);							// note 1; won't work as good here
+		var cardIndex = 0;
+		while (calculateProbability(cards[cardNames[cardIndex]].probability) < rand) {
+			rand -= calculateProbability(cards[cardNames[cardIndex]].probability);
+			cardIndex++;
+		}
+		setActiveCard(possibleCards[cardIndex]);										// select one of the possible cards
 	}
 	checkWinLose();
 	round++;
 }
 
 function setActiveCard(name) {															// updates the page to show the new card
-	console.log(name);
+   	activeCard = cards[name];
 	cardText.innerText = activeCard.text;												// update text
 	cardImg.src = activeCard.img;														// update image
 	if (activeCard.answers[RIGHT] !== undefined) {										// check if 2 answers exist
@@ -124,6 +131,20 @@ function checkWinLose() {
 	}
 }
 
+function calculateProbability(term) {													// calculates the probability
+	if (typeof term === "number") {
+		return term;
+	}
+	for (var i = 0; i < categoryNames.length; i++) {									// replaces every category name with it's current value
+		if (typeof categories[categoryNames[i]] === "number") {
+			term = term.replace(
+				new RegExp(categoryNames[i], "g"),
+				categories[categoryNames[i]]
+			);
+		}
+	}
+	/*DON'T DO THIS!!!!*/return eval(term);												// calculates the value of the term (VERY DANGEROUS!!!!!!!!!!!!)
+}
 
 /**************************************************************************************
 * 1. the order of the entries in next_cards is static. this can be used to calculate  *
