@@ -13,6 +13,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	cursor: url("Curser.png"), auto;
 }
 
 #middle {
@@ -43,12 +44,12 @@ html, body {
 }
 
 #left_btn {
-	cursor: pointer;
+	cursor: url("Curser_hand.png"), auto;
 	flex: 0 0 25%;
 }
 
 #right_btn {
-	cursor: pointer;
+	cursor: url("Curser_hand.png"), auto;
 	flex: 0 0 25%;
 }
 
