@@ -6,6 +6,7 @@ img {
 
 html, body {
 	color: #d8d6d3;
+	background-color: black;
 	background-image: url("background_2.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
