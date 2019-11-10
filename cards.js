@@ -195,7 +195,7 @@ const cards = {
 			}
 		],
 		text: "DÜRRE!",
-		img: "card-flut.png",
+		img: "card-dürre.png",
 		answers: [
 			{
                 text: "THIS LIL SECRET NOONE SEES",
