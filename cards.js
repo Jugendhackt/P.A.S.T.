@@ -1,4 +1,4 @@
-﻿const cardNames = ["card1","card2","card3","card4","card5","event1"];
+﻿const cardNames = ["card1","card2","card3","card4","card5","event1","event2"];
 const cards = {
 	card1: {
 		probability: 1,
@@ -19,8 +19,9 @@ const cards = {
 			{
                 text: "Steuern belassen",
 				changes: {
-					satisfaction: +5,
+					satisfaction: +10,
 					environment: -10,
+					health: -5,
 					desaster: +1
 				},
 				next_cards: null
@@ -32,7 +33,7 @@ const cards = {
 		conditions: [
 			{
 				category: "money",
-				min: 40,
+				min: 30,
 				max: 100
 			}
 		],
@@ -117,9 +118,9 @@ const cards = {
 			{
                 text: "Abschiebungen",
 				changes: {
-					money: +5,
+					money: +10,
 					satisfaction: -10,
-					health: +5,
+					health: -5,
 					desaster: +1
 				},
 				next_cards: null
@@ -135,11 +136,11 @@ const cards = {
 				max: 100
 			}
 		],
-		text: "Dammbau",
+		text: "Katastrophenschutz",
 		img: "card-damm.png",
 		answers: [
 			{
-                text: "Hochwasser-Prävention",
+                text: "Dammbau",
 				changes: {
 					satisfaction: +5,
 					money: -10,
@@ -152,8 +153,7 @@ const cards = {
                 text: "Geld sparen",
 				changes: {
 					health: -10,
-					money: +10,
-					environment: +5,
+					money: +15,
 					desaster: +1
 				},
 				next_cards: null
@@ -161,7 +161,7 @@ const cards = {
 		]
 	},
 	event1: {
-		probability: "desaster / 3",
+		probability: "desaster / 4",
 		conditions: [
 			{
 				category: "desaster",
@@ -177,8 +177,32 @@ const cards = {
 				changes: {
 					satisfaction: -5,
 					money: -5,
-					health: -5,
+					health: -10,
 					environment: -5,
+					desaster: -7
+				},
+				next_cards: null
+			}
+		]
+	},
+	event2: {
+		probability: "desaster / 4",
+		conditions: [
+			{
+				category: "desaster",
+				min: 10,
+				max: 100
+			}
+		],
+		text: "DÜRRE!",
+		img: "card-flut.png",
+		answers: [
+			{
+                text: "THIS LIL SECRET NOONE SEES",
+				changes: {
+					satisfaction: -5,
+					health: -10,
+					environment: -10,
 					desaster: -7
 				},
 				next_cards: null

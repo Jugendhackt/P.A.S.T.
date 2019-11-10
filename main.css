@@ -16,9 +16,10 @@ html, body {
 #card_text {
 	width: 100%;
 	text-align: center;
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: bold;
 	color: #ffaa44;
+	font-family: 'Press Start 2P';
 }
 
 #container {
@@ -47,8 +48,9 @@ html, body {
 
 .btn_text {
 	text-align: center;
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: bold;
+	font-family: 'Press Start 2P';
 }
 
 #card_img {
